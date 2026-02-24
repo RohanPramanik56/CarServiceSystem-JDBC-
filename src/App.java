@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class App {
-    static void main() throws SQLException {
+    static void main() throws SQLException, ClassNotFoundException {
         Scanner sc = new Scanner(System.in);
         BillingService billingService = new BillingService();
 
@@ -24,7 +24,25 @@ public class App {
                     billingService.customerService.addCustomer(new Customers(0, customerName, phoneNumber, cars));
                     break;
                 case 2:
-
+                    System.out.println("Enter customer ID: ");
+                    int customerID = sc.nextInt();
+                    System.out.println("Enter Vehicle ID: ");
+                    int vehicleID = sc.nextInt();
+                    System.out.println("Enter number of services: ");
+                    int numOfServices = sc.nextInt();
+                    List<Integer> services = new ArrayList<>();
+                    for (int i = 0; i < numOfServices; i++) {
+                        System.out.println("Enter service ID: ");
+                        services.add(sc.nextInt());
+                    }
+                    billingService.createInvoice(customerID, vehicleID, services);
+                case 3:
+                    billingService.showAllInvoices();
+                    break;
+                case 4:
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice");
             }
         }
     }

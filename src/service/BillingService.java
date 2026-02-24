@@ -11,9 +11,11 @@ public class BillingService {
 
     // function to generate invoice
     public void createInvoice(int customerId, int vehicleId, List<Integer> serviceIds) throws SQLException, ClassNotFoundException {
+        String sids = "";
         for(Integer serviceId : serviceIds) {
-            invoiceService.addInvoice(new Invoices(0, customerId, vehicleId, serviceId));
+            sids += serviceId;
         }
+        invoiceService.addInvoice(new Invoices(0, customerId, vehicleId, Integer.parseInt(sids)));
         System.out.println("Invoice generated successfully....");
     }
 

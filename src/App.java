@@ -22,7 +22,10 @@ public class App {
                     System.out.print("No of cars: ");
                     int cars = sc.nextInt();
                     billingService.customerService.addCustomer(new Customers(0, customerName, phoneNumber, cars));
+                    Customers customerBasedOnNumber = billingService.customerService.getCustomerBasedOnNumber(phoneNumber);
+                    //billingService
                     break;
+
                 case 2:
                     System.out.println("Enter customer ID: ");
                     int customerID = sc.nextInt();
@@ -36,11 +39,14 @@ public class App {
                         services.add(sc.nextInt());
                     }
                     billingService.createInvoice(customerID, vehicleID, services);
+
                 case 3:
                     billingService.showAllInvoices();
                     break;
+
                 case 4:
                     System.exit(0);
+
                 default:
                     System.out.println("Invalid choice");
             }

@@ -34,4 +34,17 @@ public class CustomerService {
         }
         return custList;
     }
+
+    // Method to add customer in DB
+    public Customers getCustomerBasedOnNumber(String number) throws SQLException {
+        Customers customer = new Customers();
+        Connection conn = DBConfig.getConnection();
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM customers where phone = " + number);
+        while(rs.next()) {
+            customer = new Customers(rs.getInt("id"), rs.getString("name"), rs.getString("phone_no"), rs.getInt("no_of_cars"));
+        }
+        return customer;
+    }
+
 }

@@ -6,6 +6,9 @@ public class Customers {
     private String phoneNo;
     private int noOfCars;
 
+    // empty constructor
+    public Customers() {}
+
     //constructor
     public Customers(int id, String name, String phoneNo, int noOfCars) {
         this.id = id;
